@@ -26,6 +26,8 @@ jobs:
         python cron_test.py
     - name: commit files
       run: |
+        git config --global user.email "aseem.a.shukla@gmail.com"
+        git config --global user.name "Aseem Shukla"
         git add .
         git commit -m "update data"
     - name: push changes
