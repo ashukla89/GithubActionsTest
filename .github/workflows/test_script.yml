@@ -1,0 +1,25 @@
+# This workflow will install Python and run a test script that just creates a txt file w/ date and time
+
+name: Python application
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # runs every 5 minutes
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+    - name: Execute python script
+      run: |
+        python cron_test.py
