@@ -25,11 +25,11 @@ jobs:
       run: |
         python cron_test.py
     - name: commit files
-        run: |
-          git add .
-          git commit -m "update data"
-      - name: push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+      run: |
+        git add .
+        git commit -m "update data"
+    - name: push changes
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master
