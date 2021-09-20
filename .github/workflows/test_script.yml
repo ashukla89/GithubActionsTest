@@ -1,4 +1,5 @@
 # This workflow will install Python and run a test script that just creates a txt file w/ date and time
+# Many thanks to this explainer: https://canovasjm.netlify.app/2020/11/29/github-actions-run-a-python-script-on-schedule-and-commit-changes/
 
 name: Python application
 
@@ -23,3 +24,12 @@ jobs:
     - name: Execute python script
       run: |
         python cron_test.py
+    - name: commit files
+        run: |
+          git add .
+          git commit -m "update data"
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
